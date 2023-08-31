@@ -9,6 +9,9 @@ import { formSchema } from "@/schemas/form/formSchema";
 import { Input } from "../ui/input";
 import { Form, FormControl, FormLabel, FormDescription, FormField, FormItem, FormMessage, useFormField } from "../ui/form";
 import { Button } from "../ui/button";
+import FileUpload from "../FileUpload";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 type Props = {};
 
@@ -27,10 +30,19 @@ const InitialModal = (props: Props) => {
     },
   });
 
+  const router = useRouter();
+
   const isLoading = form.formState.isSubmitting;
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    console.log(values);
+    try {
+      await axios.post("/api/servers", values);
+      form.reset();
+      router.refresh();
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   if (!mounted) {
@@ -53,7 +65,9 @@ const InitialModal = (props: Props) => {
                   name="imageUrl"
                   render={({ field }) => (
                     <FormItem>
-                      <FormControl></FormControl>
+                      <FormControl>
+                        <FileUpload endpoint="serverImage" onChange={field.onChange} value={field.value} />
+                      </FormControl>
                     </FormItem>
                   )}
                 />

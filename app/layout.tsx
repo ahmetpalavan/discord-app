@@ -4,6 +4,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 import "./globals.css";
+import { ModalProvider } from "@/components/provider/modal-provider";
 
 const font = Open_Sans({ subsets: ["latin"] });
 
@@ -18,6 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <html lang="en">
         <body className={cn(font.className, "bg-white dark:bg-[#313338]")}>
           <ThemeProvider storageKey="discord-theme" attribute="class" defaultTheme="dark" enableSystem>
+            <ModalProvider />
             {children}
           </ThemeProvider>
         </body>
