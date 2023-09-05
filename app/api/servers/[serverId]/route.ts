@@ -32,3 +32,28 @@ export async function PATCH(req: Request, { params }: { params: { serverId: stri
     return new NextResponse("Not found", { status: 404 });
   }
 }
+
+export async function DELETE(req: Request, { params }: { params: { serverId: string } }) {
+  try {
+    const profile = await currentProfile();
+    if (!profile) {
+      return new NextResponse("Unauthorized", { status: 401 });
+    }
+
+    if (!params.serverId) {
+      return new NextResponse("Not found", { status: 404 });
+    }
+
+    const server = await db.server.delete({
+      where: {
+        id: params.serverId,
+        profileId: profile.id,
+      },
+    });
+
+    return new NextResponse(JSON.stringify(server));
+  } catch (error) {
+    console.log(error, "[SERVER_ID]");
+    return new NextResponse("Not found", { status: 404 });
+  }
+}

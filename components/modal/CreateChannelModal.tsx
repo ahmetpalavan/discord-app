@@ -61,6 +61,8 @@ const CreateChannelModal = (props: Props) => {
       form.reset();
       router.refresh();
       onClose();
+      console.log(values);
+      
     } catch (error) {
       console.log(error);
     }

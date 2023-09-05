@@ -20,7 +20,7 @@ const FileUpload = (props: Props) => {
         <Image fill alt="file" src={props.value} className="rounded-full" />
         <button
           onClick={() => {
-            props.onChange(undefined);
+            props.onChange("");
           }}
           className="bg-rose-500 text-white p-1 rounded-full absolute top-0 right-0 shadow-sm"
           type="button"
