@@ -11,7 +11,7 @@ type Props = {
   label: string;
   role: Role;
   sectionType: "channels" | "members";
-  channelType: ChannelType;
+  channelType?: ChannelType;
   server?: ServerWithMembers;
 };
 

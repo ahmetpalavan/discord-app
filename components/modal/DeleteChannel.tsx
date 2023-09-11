@@ -3,28 +3,37 @@
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useModalStore } from "@/hooks/use-modal-store";
 import { ServerWithMembers } from "@/types";
-import { useState } from "react";
-import { Button } from "../ui/button";
+import { Channel } from "@prisma/client";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import qs from "query-string";
+import { useState } from "react";
+import { Button } from "../ui/button";
 
 type Props = {};
 
-const LeaveServer = (props: Props) => {
+const DeleteChannel = (props: Props) => {
   const [isLoading, setIsLoading] = useState(false);
   const { onOpen, onClose, type, isModalOpen, data } = useModalStore();
-  const openModal = isModalOpen && type === "leaveServer";
+  const openModal = isModalOpen && type === "deleteChannel";
   const router = useRouter();
 
-  const { server } = data as { server: ServerWithMembers };
+  const { server, channel } = data as { server: ServerWithMembers; channel: Channel };
+  console.log(data, channel);
 
   const onClick = async () => {
     try {
       setIsLoading(true);
-      await axios.patch(`/api/servers/${server.id}/leave`);
-      onClose();
+      const url = qs.stringifyUrl({
+        url: `/api/channels/${channel.id}`,
+        query: {
+          serverId: server.id,
+        },
+      });
+      await axios.delete(url);
       router.refresh();
-      router.push("/");
+      router.push(`/server/${server.id}`);
+      onClose();
     } catch (error) {
       console.log(error);
     } finally {
@@ -32,13 +41,15 @@ const LeaveServer = (props: Props) => {
     }
   };
 
+
   return (
     <Dialog open={openModal} onOpenChange={onClose}>
       <DialogContent className="bg-white text-black p-0 overflow-hidden">
         <DialogHeader className="pt-8 px-6">
-          <DialogTitle className="text-2xl font-bold text-center">Leave Server</DialogTitle>
+          <DialogTitle className="text-2xl font-bold text-center">Delete Channel</DialogTitle>
           <DialogDescription className="text-sm text-center">
-            Are you sure you want to leave <span className="font-semibold text-indigo-500">{server?.name}</span>?
+            Are you sure you want to do this? <br />
+            <span className="text-indigo-500 font-semibold">#{channel?.name}</span> will be permanently deleted.
           </DialogDescription>
         </DialogHeader>
         <DialogFooter className="flex flex-col space-y-4 pb-8 px-6">
@@ -56,4 +67,4 @@ const LeaveServer = (props: Props) => {
   );
 };
 
-export default LeaveServer;
+export default DeleteChannel;

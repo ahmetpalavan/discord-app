@@ -17,7 +17,6 @@ const DeleteServer = (props: Props) => {
   const router = useRouter();
 
   const { server } = data as { server: ServerWithMembers };
-  console.log(server);
 
   const onClick = async () => {
     try {
