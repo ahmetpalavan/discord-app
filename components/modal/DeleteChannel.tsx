@@ -2,13 +2,13 @@
 
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useModalStore } from "@/hooks/use-modal-store";
-import { ServerWithMembers } from "@/types";
 import { Channel } from "@prisma/client";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import qs from "query-string";
 import { useState } from "react";
 import { Button } from "../ui/button";
+import { ServerWithMembersWithProfiles } from "@/types";
 
 type Props = {};
 
@@ -18,8 +18,7 @@ const DeleteChannel = (props: Props) => {
   const openModal = isModalOpen && type === "deleteChannel";
   const router = useRouter();
 
-  const { server, channel } = data as { server: ServerWithMembers; channel: Channel };
-  console.log(data, channel);
+  const { server, channel } = data as { server: ServerWithMembersWithProfiles; channel: Channel };
 
   const onClick = async () => {
     try {
