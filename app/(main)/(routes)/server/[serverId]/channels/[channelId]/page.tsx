@@ -43,7 +43,7 @@ const ChannelIdPage = async (props: Props) => {
       <ChatHeader serverId={props.params.serverId} type="channel" name={channel.name} />
       <>
         <ChatMessages
-          apiUrl="/api/socket/messages"
+          apiUrl="/api/messages"
           chatId={channel.id}
           member={member}
           name={channel.name}
@@ -54,7 +54,7 @@ const ChannelIdPage = async (props: Props) => {
             channelId: props.params.channelId,
           }}
           type="channel"
-          socketUrl="/api/socket"
+          socketUrl="/api/socket/messages"
         />
         <ChatInput
           apiUrl="/api/socket/messages"
@@ -62,7 +62,7 @@ const ChannelIdPage = async (props: Props) => {
           type="channel"
           query={{
             serverId: props.params.serverId,
-            channelId: props.params.channelId,
+            channelId: channel.id,
           }}
         />
       </>

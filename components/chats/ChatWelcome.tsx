@@ -15,7 +15,7 @@ const ChatWelcome = (props: Props) => {
         </div>
       )}
       <p className="text-xl md:text-3xl font-bold">
-        {props.type === "channel" ? "Welcome to #" : "Welcome to "} {props.name}
+        {props.type === "channel" ? `Welcome to #${props.name}` : `Welcome to your DM with ${props.name}`}
       </p>
       <p className="text-zinc-600 dark:text-zinc-400 text-sm">
         {props.type === "channel"

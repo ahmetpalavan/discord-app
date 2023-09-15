@@ -1,3 +1,5 @@
+"use client";
+
 import qs from "query-string";
 import { useParams } from "next/navigation";
 import { useInfiniteQuery } from "@tanstack/react-query";
@@ -32,7 +34,7 @@ export const useChatQuery = ({ apiUrl, paramKey, paramValue, queryKey }: ChatQue
     queryKey: [queryKey],
     queryFn: fetchMessages,
     getNextPageParam: (lastPage) => lastPage?.nextCursor,
-    refetchInterval: isConnecting ? false : 1000,
+    refetchInterval: isConnecting ? 1000 : false,
   });
 
   return {
