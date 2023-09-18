@@ -2,7 +2,7 @@
 
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useModalStore } from "@/hooks/use-modal-store";
-import { ServerWithMembers } from "@/types";
+import { ServerWithMembersWithProfiles } from "@/types";
 import { ScrollArea } from "../ui/scroll-area";
 import UserAvatar from "../UserAvatar";
 import { Check, Gavel, Loader2, MoreVertical, Shield, ShieldAlert, ShieldCheck, ShieldQuestion, User } from "lucide-react";
@@ -37,7 +37,7 @@ const MembersModal = (props: Props) => {
   const [loadingId, setLoadingId] = useState<string | null>(null);
   const router = useRouter();
 
-  const { server } = data as { server: ServerWithMembers };
+  const { server } = data as { server: ServerWithMembersWithProfiles };
 
   const onRoleChange = async (memberId: string, role: Role) => {
     try {

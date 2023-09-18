@@ -2,7 +2,7 @@
 
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useModalStore } from "@/hooks/use-modal-store";
-import { ServerWithMembers } from "@/types";
+import { ServerWithMembersWithProfiles } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Channel, ChannelType } from "@prisma/client";
 import axios from "axios";
@@ -37,7 +37,7 @@ const EditChannel = (props: Props) => {
 
   const openModal = isModalOpen && type === "editChannel";
 
-  const { server, channel } = data as { server: ServerWithMembers; channel: Channel };
+  const { server, channel } = data as { server: ServerWithMembersWithProfiles; channel: Channel };
 
   const form = useForm({
     resolver: zodResolver(formSchema),

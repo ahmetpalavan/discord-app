@@ -1,13 +1,13 @@
 "use client";
 
-import { ServerWithMembers } from "@/types";
+import { ServerWithMembersWithProfiles } from "@/types";
 import { Role } from "@prisma/client";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "../ui/dropdown-menu";
 import { ChevronDown, LogOut, PlusCircle, Settings, Trash, UserPlus, Users } from "lucide-react";
 import { useModalStore } from "@/hooks/use-modal-store";
 
 type Props = {
-  server: ServerWithMembers;
+  server: ServerWithMembersWithProfiles;
   role?: Role;
 };
 

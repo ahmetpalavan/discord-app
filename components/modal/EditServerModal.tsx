@@ -12,7 +12,7 @@ import { Button } from "../ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
 import { Input } from "../ui/input";
 import { useModalStore } from "@/hooks/use-modal-store";
-import { ServerWithMembers } from "@/types";
+import { ServerWithMembersWithProfiles } from "@/types";
 import { useEffect } from "react";
 
 type Props = {};
@@ -24,7 +24,7 @@ const EditServerModal = (props: Props) => {
 
   const openModal = isModalOpen && type === "editServer" && !!data;
 
-  const { server } = data as { server: ServerWithMembers };
+  const { server } = data as { server: ServerWithMembersWithProfiles };
 
   const form = useForm<Input>({
     resolver: zodResolver(formSchema),

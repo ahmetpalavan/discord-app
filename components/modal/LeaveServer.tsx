@@ -2,7 +2,7 @@
 
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useModalStore } from "@/hooks/use-modal-store";
-import { ServerWithMembers } from "@/types";
+import { ServerWithMembersWithProfiles } from "@/types";
 import { useState } from "react";
 import { Button } from "../ui/button";
 import axios from "axios";
@@ -16,7 +16,7 @@ const LeaveServer = (props: Props) => {
   const openModal = isModalOpen && type === "leaveServer";
   const router = useRouter();
 
-  const { server } = data as { server: ServerWithMembers };
+  const { server } = data as { server: ServerWithMembersWithProfiles };
 
   const onClick = async () => {
     try {

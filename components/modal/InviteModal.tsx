@@ -3,7 +3,7 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useModalStore } from "@/hooks/use-modal-store";
 import { useOrigin } from "@/hooks/use-origin";
-import { ServerWithMembers } from "@/types";
+import { ServerWithMembersWithProfiles } from "@/types";
 import { Check, Copy, RefreshCcw } from "lucide-react";
 import { useState } from "react";
 import { Button } from "../ui/button";
@@ -19,7 +19,7 @@ const InviteModal = (props: Props) => {
   const { onOpen, onClose, type, isModalOpen, data } = useModalStore();
   const openModal = isModalOpen && type === "invite";
 
-  const { server } = data as { server: ServerWithMembers };
+  const { server } = data as { server: ServerWithMembersWithProfiles };
 
   const origin = useOrigin();
 

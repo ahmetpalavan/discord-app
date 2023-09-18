@@ -1,6 +1,6 @@
 "use client";
 
-import { ServerWithMembers } from "@/types";
+import { ServerWithMembersWithProfiles } from "@/types";
 import { ChannelType, Role } from "@prisma/client";
 import { Plus, Settings } from "lucide-react";
 import React from "react";
@@ -12,7 +12,7 @@ type Props = {
   role: Role;
   sectionType: "channels" | "members";
   channelType?: ChannelType;
-  server?: ServerWithMembers;
+  server?: ServerWithMembersWithProfiles;
 };
 
 const ServerSection = (props: Props) => {
