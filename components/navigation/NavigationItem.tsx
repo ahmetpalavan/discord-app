@@ -22,8 +22,8 @@ const NavigationItem = (props: Props) => {
         <div
           className={cn(
             "absolute left-0 bg-primary rounded-r-full transition-all w-[4px]",
-            params.serverId !== props.id && "group-hover:h-[20px]",
-            params.serverId === props.id ? "h-[36px]" : "h-[8px]"
+            params?.serverId !== props.id && "group-hover:h-[20px]",
+            params?.serverId === props.id ? "h-[36px]" : "h-[8px]"
           )}
         />
         <div
