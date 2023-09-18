@@ -53,8 +53,11 @@ const InitialModal = (props: Props) => {
     <Dialog open={true}>
       <DialogContent className="bg-white text-black p-0 overflow-hidden">
         <DialogHeader className="pt-8 px-6">
-          <DialogTitle className="text-2xl font-bold text-center">Customize your experience</DialogTitle>
-          <DialogDescription className="text-sm text-zinc-500 text-center">Choose your language and location settings</DialogDescription>
+          <DialogTitle className="text-2xl font-bold text-center">Customize your server</DialogTitle>
+          <DialogDescription className="text-sm text-zinc-500 text-center">
+            {" "}
+            Give your server a personality with a name and an image. You can always change it later.
+          </DialogDescription>
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
