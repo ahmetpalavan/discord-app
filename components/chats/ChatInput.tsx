@@ -43,10 +43,10 @@ const ChatInput = (props: Props) => {
         url: props.apiUrl,
         query: props.query,
       });
+      await axios.post(url, values);
 
       form.reset();
       router.refresh();
-      await axios.post(url, values);
     } catch (error) {
       console.error(error);
     }

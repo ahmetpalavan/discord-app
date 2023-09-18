@@ -8,6 +8,7 @@ import { Loader2, ServerCrash } from "lucide-react";
 import ChatItem from "./ChatItem";
 import { format } from "date-fns";
 import { useChatSocket } from "@/hooks/use-chat-socket";
+import useChatScroll from "@/hooks/use-chat-scroll";
 
 type Props = {
   name: string;
@@ -43,6 +44,13 @@ const ChatMessages = (props: Props) => {
   });
 
   useChatSocket({ addKey, queryKey, updateKey });
+  useChatScroll({
+    chatRef,
+    bottomRef,
+    loadMore: fetchNextPage,
+    shouldLoadMore: !!hasNextPage && !isFetchingNextPage,
+    count: data?.pages?.[0]?.items?.length ?? 0,
+  });
 
   const dateFormat = "d MMM yyyy, HH:mm";
 
@@ -63,8 +71,6 @@ const ChatMessages = (props: Props) => {
       </div>
     );
   }
-
-  console.log(hasNextPage, isFetchingNextPage, "hasNextPage");
 
   return (
     <div ref={chatRef} className="flex-1 flex flex-col py-4 overflow-y-auto">

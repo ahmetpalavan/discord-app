@@ -32,15 +32,26 @@ const useChatScroll = (props: Props) => {
   useEffect(() => {
     const bottomDiv = props.bottomRef?.current;
     const topDiv = props.chatRef?.current;
+
     const shouldAutoScroll = () => {
       if (!isScrolling && bottomDiv) {
         setIsScrolling(true);
         return true;
       }
-    };
-    
+      if (!topDiv) {
+        return false;
+      }
 
-  }, []);
+      const distanceFromBottom = topDiv.scrollHeight - topDiv.scrollTop - topDiv.clientHeight;
+      return distanceFromBottom <= 100;
+    };
+
+    if (shouldAutoScroll()) {
+      setTimeout(() => {
+        props.bottomRef?.current?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    }
+  }, [props.bottomRef, props.chatRef, isScrolling, props.count]);
 };
 
 export default useChatScroll;
