@@ -1,34 +1,52 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Discord Uygulaması
 
-## Getting Started
+Bu proje, Discord'un temel özelliklerini taklit eden veya benzer bir kullanıcı deneyimi sunan bir web sitesi veya uygulamadır. Kullanıcılar bu uygulamada metin ve sesli iletişim kurabilir, sunucular oluşturabilir ve arkadaş ekleyebilirler.
 
-First, run the development server:
+## Özellikler
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+- Kullanıcı kaydı oluşturma ve giriş yapma
+- Sunucu oluşturma ve sunuculara katılma
+- Metin ve sesli iletişim
+- Arkadaş ekleme ve arkadaşlık istekleri
+- Emoji desteği
+- Direkt mesajlaşma ve grup sohbetleri
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Kullanılan Teknolojiler
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Next.js
+- Zustand 
+- TypeScript 
+- Socket.io 
+- React Hook Form 
+- MongoDB 
+- Prisma 
+- Axios 
+- Tailwind CSS 
+- LiveKit for real-time audio/video 
+- Emoji Mart for emoji selection 
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Nasıl Kullanılır?
 
-## Learn More
+1. Proje deposunu klonlayın:
 
-To learn more about Next.js, take a look at the following resources:
+    ```bash
+    https://github.com/ahmetpalavan/discord-app.git
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. Proje klasörüne gidin:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+    ```bash
+    cd discord-app
+    ```
 
-## Deploy on Vercel
+3. Gerekli paketleri yükleyin:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    ```bash
+    npm install
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+4. Geliştirme sunucusunu başlatın:
+
+    ```bash
+    npm run dev
+    ```
